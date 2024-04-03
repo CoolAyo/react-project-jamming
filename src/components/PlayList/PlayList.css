@@ -1,0 +1,23 @@
+#Playlist{ /*To make code reactive, when device length goes below certain value make this id also do: margin: 0 10%;*/
+    border: 0.2em gray solid;
+    width: 450px;
+    height: 800px;
+}
+
+
+#Playlist input{
+    position: relative;
+    left: 25%;
+    top: 2%;
+}
+
+.Playlist-save{
+    position: relative;
+    left: 25%;
+    top: 5%;
+    height: 50px;
+    background-color: beige;
+    border-radius: 1em;
+    padding: 1.2em;
+    margin-bottom: 5rem;
+}

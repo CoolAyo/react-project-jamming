@@ -1,0 +1,22 @@
+.Track{
+    position: relative;
+    margin-top: 2em;
+    left: 2.5%;
+    width: 92%;
+    background-color: rgba(27, 63, 136, 0.8);
+    border-radius: 2em;
+    border: 0.1em rgb(122, 123, 125);
+    border-style:inherit;
+    padding: 0.5em 0.01em 3.2em 0.8em;
+    
+}
+
+.TrackInfo p{
+    position: relative;
+    top: 20px;
+    color: #EFE1C7;   
+}
+
+.TrackInfo p span{
+    font-weight: 600;
+}

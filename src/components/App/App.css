@@ -1,0 +1,90 @@
+body{
+    /*background-color: #00ffff;*/
+    background-image: url(../media/images/bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+html{
+    font-size: 16px;
+}
+
+h1{
+    font-family: 'Courier New', Courier, monospace;
+    color: blue;
+    border: 0.4em red ridge;
+    padding: 20px;
+    max-width: 320px;
+    background-color: lightgreen;
+}
+
+
+#AppMain{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#Playlist,#TrackContainer{
+    overflow: auto;
+}
+
+
+
+h2{
+    position: relative;
+    font-size: 2.5em;
+    top: 23px;
+    left: 2.5%;
+}
+
+h3{
+    font-size: 1.15rem;
+    font-weight: 700;
+    box-sizing: border-box;
+    color: white;
+}
+
+
+
+  @media only screen and (min-width: 1134px) {
+    h1{
+        font-size: 4em;
+        text-align: left;
+    }
+    #TrackContainer{
+        margin: 0 10%;
+    }
+
+  }
+
+  @media only screen and (max-width: 1133px) {
+    h1{
+        font-size: 4em;
+        text-align: left;
+    }
+    #TrackContainer{
+
+        margin: 0 5%;
+    }
+
+  }
+
+  @media only screen and (max-width: 1012px) {
+    h1{
+        font-size: 3em;
+        text-align: center;
+    }
+    #TrackContainer{
+
+        margin: 0 5%;
+    }
+
+    #Playlist{
+        margin: 0 5%;
+        margin-top: 35px;
+    }
+
+  }
+
+
+
