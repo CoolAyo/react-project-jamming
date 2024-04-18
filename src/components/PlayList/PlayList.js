@@ -15,11 +15,11 @@ const PlayList = () => {
     
     return(
         <div id='Playlist'> {/*Show what is about to be added to playlist, allowing for removal*/}
-          <input defaultValue={"New Playlist"} value={newName} onChange={handleChange} /> {/*Change the name of the new playlist that will be made*/}
+          <input value={newName} onChange={handleChange} /> {/*Change the name of the new playlist that will be made*/}
             <div id='PlaylistContainer'>
               {/*Only show tracks that have been selected */}
 
-              <Tracks/>
+              <Tracks isPlaylist={true}/>
 
             </div>
             <button className="Playlist-save"> {/*Push the added save to Spotify*/}

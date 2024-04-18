@@ -1,9 +1,13 @@
-const clientId = "";
+const clientId = "21c57352b0ac4f12888cb994e9f31408";
 let accessToken;
 const redirectUri = 'http://localhost:3001/';
 
 const Spotify = {
     getAccessToken(){
+        if (accessToken){
+            return accessToken;
+        }
+
         const accessTokenMatch = window.location.href.match(/access_token=([^&]*)/);
         const expiresInMatch = window.location.href.match(/expires_in=([^&]*)/);
         if (accessTokenMatch && expiresInMatch) {
@@ -13,7 +17,7 @@ const Spotify = {
           window.history.pushState('Access Token', null, '/'); // When coming back to the website using the browsers history feature, it will bring the user back to the default page before the token was added.
           return accessToken;
         } else {
-            const authoriseToken = `https://accounts.spotify.com/authorize?client_id=${clientId}&responsetype=token&scope=playlist-modify-public&redirect_uri=${redirectUri}`;
+            const authoriseToken = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUri}`;
             window.location.href = authoriseToken;
         }
     },
@@ -21,6 +25,7 @@ const Spotify = {
     async search(searchTerm,isAlbum){
         const token = Spotify.getAccessToken();
         let searchType = 'track'
+        let response = ""
         try{
             let reponse;
             if (isAlbum == true){
@@ -43,12 +48,13 @@ const Spotify = {
                     return [];
                 }
                 else{
-                    return jsonResponse[searchType + 's'].items.map(track => ({
+                    return jsonResponse[searchType + 's'].items.map(track => ({                      
                         id: track.id,
                         name: track.name,
                         artist: track.artists[0].name,
                         album: track.album.name,
                         uri: track.uri
+                    
                   }));                
             }
         }
