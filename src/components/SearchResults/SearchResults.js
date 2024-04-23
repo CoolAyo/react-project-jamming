@@ -13,7 +13,7 @@ const SearchResults = (props) => {
     return(
     <div id='TrackContainer'> {/*Allow for adding stuff to the playlist*/}
       <h2>Results</h2> {/*Show: Popular songs (searched up song name) if something has been searched up and "Results" (when nothing has yet been typed)*/}
-      <Tracks tracks={props.searchResults}/>
+      <Tracks tracks={props.searchResults} onAdd={props.onAdd}/>
     </div>
     );
 };

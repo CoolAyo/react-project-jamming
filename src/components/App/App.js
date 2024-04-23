@@ -21,9 +21,21 @@ const App = () => {
 
   //console.log(searchResults); //Finaly
 
-  /*const addTrack = useCallback((track) =>{
+  const addTrack = useCallback((track) =>{
 
-  },[])*/
+    if (playlistTracks.some((isTrack) => isTrack.id === track.id))
+    return;
+
+    setPlaylistTracks((prevTracks) => [...prevTracks, track]);
+  },[playlistTracks])
+
+  const removeTrack = useCallback((track) => {
+    setPlaylistTracks((prevTracks) =>
+      prevTracks.filter((currentTrack) => currentTrack.id !== track.id)
+    );
+  }, [])
+
+ 
 
     
     return (
@@ -31,8 +43,8 @@ const App = () => {
         <h1>Jammming</h1> 
         <SearchBar onSearch={search} />
         <div id='AppMain'>
-          <SearchResults searchResults={searchResults} /*onAdd={addTrack}*//>
-          <PlayList/>
+          <SearchResults searchResults={searchResults} onAdd={addTrack}/>
+          <PlayList playlistTracks={playlistTracks} onRemove={removeTrack}/>
         </div>
       </div>
     );

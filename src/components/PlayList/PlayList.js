@@ -5,7 +5,7 @@ import "./PlayList.css";
 import Tracks from "../Tracks/Tracks";
 
 
-const PlayList = () => {
+const PlayList = (props) => {
   {/*const [songList, setsongList] = useState();*/}
   const [newName, setnewName] = useState("New Playlist");
 
@@ -19,7 +19,7 @@ const PlayList = () => {
             <div id='PlaylistContainer'>
               {/*Only show tracks that have been selected */}
 
-              <Tracks isPlaylist={true}/>
+              <Tracks tracks={props.playlistTracks} isPlaylist={true} onRemove={props.onRemove}/>
 
             </div>
             <button className="Playlist-save"> {/*Push the added save to Spotify*/}

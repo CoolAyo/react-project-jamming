@@ -1,4 +1,4 @@
-const clientId = "";
+const clientId = "21c57352b0ac4f12888cb994e9f31408";
 let accessToken;
 const redirectUri = 'http://localhost:3001/';
 
@@ -60,7 +60,7 @@ const Spotify = {
         }
         catch (e)
         {
-            console.log(e);  
+            //console.log(e);  
         }
 
     },
@@ -108,7 +108,7 @@ const Spotify = {
 
         }
         catch(e){
-            console.log(e)
+            //console.log(e)
         }
     }
 
