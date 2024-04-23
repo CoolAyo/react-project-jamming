@@ -68,6 +68,9 @@ const Spotify = {
     async playListExport(name, trackUris){
         let user_id;
         let playlist_id;
+        if (!trackUris){
+            return []
+        }
         const token = Spotify.getAccessToken();
         try{
             let response = await fetch(`https://api.spotify.com/v1/me`, {headers: {
@@ -84,25 +87,36 @@ const Spotify = {
             }
         }
 
-        response = await fetch(`https://api.spotify.com/v1/users/${user_id}/playlists`, {method: 'POST', body: JSON.stringify({name:name}), headers: {
-            'Content-type': 'application/json',
-                Authorization: `Bearer ${token}`
-            }
-        }); 
+        response = await fetch(`https://api.spotify.com/v1/users/${user_id}/playlists`, {
+            method: 'POST',
+            headers: {Authorization: `Bearer ${token}`},
+            body:JSON.stringify({name:name, description:"Brought to you by: The API"})
+        });
+
         if (response.ok){
             let jsonResponse = await response.json();
             if (!jsonResponse.id){
                 return [];
             }
             else{
-                playlist_id = jsonResponse.id;
-                response = await fetch(`https://api.spotify.com/v1/users/${user_id}/playlists/${playlist_id}/tracks`, {method: 'POST', body: JSON.stringify({uris:trackUris}), headers: {
-                    'Content-type': 'application/json',
-                        Authorization: `Bearer ${token}`
-                    }
-                });
-                return response; 
-                
+                playlist_id = jsonResponse.id
+            }
+        }
+
+        response = await fetch(`
+        https://api.spotify.com/v1/playlists/${playlist_id}/tracks`, {
+            method: 'POST',
+            headers:{Authorization: `Bearer ${token}`},
+            body:JSON.stringify({uris: trackUris})
+        })
+
+        if (response.ok){
+            let jsonResponse = await response.json();
+            if (!jsonResponse.snapshot_id){
+                return [];
+            }
+            else{
+                console.log(`Playlist of name: ${name} successfully uploaded to Spotify`)
             }
         }
 

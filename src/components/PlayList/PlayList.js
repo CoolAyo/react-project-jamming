@@ -11,6 +11,7 @@ const PlayList = (props) => {
 
   const handleChange = ({ target }) => { 
     setnewName(target.value)};
+    
 
     
     return(
@@ -22,7 +23,7 @@ const PlayList = (props) => {
               <Tracks tracks={props.playlistTracks} isPlaylist={true} onRemove={props.onRemove}/>
 
             </div>
-            <button className="Playlist-save"> {/*Push the added save to Spotify*/}
+            <button className="Playlist-save" onClick={props.playlistSave}> {/*Push the added save to Spotify*/}
               SAVE TO SPOTIFY ACCOUNT
             </button>
         </div>

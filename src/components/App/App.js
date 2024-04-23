@@ -35,6 +35,14 @@ const App = () => {
     );
   }, [])
 
+  const create = useCallback(() =>{
+    const trackUris = playlistTracks.map((track) => track.uri);
+    Spotify.playListExport(playlistName,trackUris).then(() => {
+      setPlaylistName("New Playlist"); //Reset everything back to default once playlist is uploaded
+      setPlaylistTracks([]);
+    });
+  }, [playlistName, playlistTracks]);
+
  
 
     
@@ -44,7 +52,7 @@ const App = () => {
         <SearchBar onSearch={search} />
         <div id='AppMain'>
           <SearchResults searchResults={searchResults} onAdd={addTrack}/>
-          <PlayList playlistTracks={playlistTracks} onRemove={removeTrack}/>
+          <PlayList playlistTracks={playlistTracks} onRemove={removeTrack} playlistSave={create}/>
         </div>
       </div>
     );
